@@ -1,0 +1,44 @@
+1. Define the ITaxCalculator interface:
+    - Method: calculateTax(income)
+        - Input: income (double)
+        - Output: tax (double)
+
+2. Implement the TaxCalculator class:
+    - Implements ITaxCalculator
+    - Method: calculateTax(income)
+        - If income < 500
+            - Return income * 0.10
+        - Else if income >= 500 and income < 1500
+            - Return income * 0.15
+        - Else if income >= 1500 and income < 2500
+            - Return income * 0.20
+        - Else
+            - Return income * 0.30
+
+3. Define the WeeklyTaxService class:
+    - Constructor: Takes ITaxCalculator instance
+    - Method: calculateWeeklyTax(income)
+        - Call ITaxCalculator's calculateTax method with income
+        - Return the result
+
+4. Define the StringUtils class:
+    - Method: repeat(str, times)
+        - Input: str (String), times (int)
+        - Output: Repeated string
+        - Use a loop to append str to a StringBuilder 'times' times
+        - Return the resulting string
+
+5. Define the TaxCalculatorApp class:
+    - Main method:
+        - Create an instance of TaxCalculator
+        - Create an instance of WeeklyTaxService with the TaxCalculator instance
+        - Create a Scanner object to read user input
+        - Prompt user to enter weekly income
+        - Read the income value from user input
+        - Call WeeklyTaxService's calculateWeeklyTax method with the income
+        - Calculate net income as income minus tax
+        - Print:
+            - "Weekly income: " followed by income
+            - "Tax withholding: " followed by tax
+            - "Net income: " followed by net income
+        - Print a separator line

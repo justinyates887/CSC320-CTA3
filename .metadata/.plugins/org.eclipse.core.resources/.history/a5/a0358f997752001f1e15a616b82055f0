@@ -1,0 +1,13 @@
+package src;
+
+public class TaxCalculatorApp {
+    public static void main(String[] args) {
+        ITaxCalculator taxCalculator = new TaxCalculator();
+        WeeklyTaxService weeklyTaxService = new WeeklyTaxService(taxCalculator);
+
+        double income = 2000;
+        double tax = weeklyTaxService.calculateWeeklyTax(income);
+
+        System.out.println("Weekly income: " + income + ", Tax withholding: " + tax);
+    }
+}

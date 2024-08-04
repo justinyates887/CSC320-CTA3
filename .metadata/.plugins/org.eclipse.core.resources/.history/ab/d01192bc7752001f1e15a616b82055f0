@@ -1,0 +1,17 @@
+package src;
+import java.util.Scanner; //IO
+
+public class TaxCalculatorApp {
+    public static void main(String[] args) {
+    	
+    	//Implement the interface
+        ITaxCalculator taxCalculator = new TaxCalculator();
+        //Inject dependency
+        WeeklyTaxService weeklyTaxService = new WeeklyTaxService(taxCalculator);
+
+        double income = 2000;
+        double tax = weeklyTaxService.calculateWeeklyTax(income);
+
+        System.out.println("Weekly income: " + income + ", Tax withholding: " + tax);
+    }
+}

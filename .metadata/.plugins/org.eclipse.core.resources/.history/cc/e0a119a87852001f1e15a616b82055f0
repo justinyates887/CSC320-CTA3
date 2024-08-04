@@ -1,0 +1,33 @@
+interface ITaxCalculator
+    method calculateTax(income: double): double
+
+class TaxCalculator implements ITaxCalculator
+    method calculateTax(income: double): double
+        if income < 500
+            return income * 0.10
+        else if income >= 500 and income < 1500
+            return income * 0.15
+        else if income >= 1500 and income < 2500
+            return income * 0.20
+        else
+            return income * 0.30
+
+class WeeklyTaxService
+    private ITaxCalculator taxCalculator
+    
+    constructor (taxCalculator: ITaxCalculator)
+        this.taxCalculator = taxCalculator
+
+    method calculateWeeklyTax(income: double): double
+        return this.taxCalculator.calculateTax(income)
+
+public class TaxCalculatorApp
+    main method (args: String[])
+        ITaxCalculator taxCalculator = new TaxCalculator()
+        WeeklyTaxService weeklyTaxService = new WeeklyTaxService(taxCalculator)
+        
+        // Sample income for demonstration
+        double income = 2000
+        double tax = weeklyTaxService.calculateWeeklyTax(income)
+        
+        print("Weekly income: " + income + ", Tax withholding: " + tax)
